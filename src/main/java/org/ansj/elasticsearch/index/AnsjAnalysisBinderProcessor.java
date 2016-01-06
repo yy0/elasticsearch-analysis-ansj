@@ -22,8 +22,8 @@ public class AnsjAnalysisBinderProcessor extends AnalysisModule.AnalysisBinderPr
 
     @Override
     public void processTokenizers(TokenizersBindings tokenizersBindings) {
-		tokenizersBindings.processTokenizer("ansj_index_token", AnsjIndexTokenizerFactory.class);
+        tokenizersBindings.processTokenizer("ansj_index_token", AnsjIndexTokenizerFactory.class);
         tokenizersBindings.processTokenizer("ansj_query_token", AnsjQueryTokenizerFactory.class);
-		super.processTokenizers(tokenizersBindings);
+        super.processTokenizers(tokenizersBindings);
     }
 }

@@ -4,14 +4,25 @@
 
     <groupId>org.ansj</groupId>
     <artifactId>elasticsearch-analysis-ansj</artifactId>
-    <version>1.x.1</version>
+    <version>1.0.1</version>
 
     <name>elasticsearch-analysis-ansj</name>
     <url>http://maven.apache.org</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <elasticsearch.version>1.4.5</elasticsearch.version>
+        <elasticsearch.version>2.1.1</elasticsearch.version>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <elasticsearch.assembly.descriptor>${project.basedir}/src/main/assemblies/plugin.xml
+        </elasticsearch.assembly.descriptor>
+        <elasticsearch.plugin.name>elasticsearch-analysis-ansj</elasticsearch.plugin.name>
+        <elasticsearch.plugin.classname>org.ansj.elasticsearch.plugin.AnalysisAnsjPlugin
+        </elasticsearch.plugin.classname>
+        <elasticsearch.plugin.jvm>true</elasticsearch.plugin.jvm>
+        <elasticsearch.plugin.site>false</elasticsearch.plugin.site>
+        <elasticsearch.plugin.isolated>false</elasticsearch.plugin.isolated>
+        <tests.rest.load_packaged>false</tests.rest.load_packaged>
+        <skip.unit.tests>true</skip.unit.tests>
     </properties>
 
     <repositories>
@@ -19,36 +30,37 @@
             <id>mvn-repo</id>
             <url>http://maven.nlpcn.org/</url>
         </repository>
+        <repository>
+            <id>haoch-maven-snapshot-repository</id>
+            <name>haoch-maven-snapshot-repository</name>
+            <url>https://raw.github.com/yy0/maven-repos/snapshot/</url>
+        </repository>
+        <repository>
+            <id>haoch-maven-release-repository</id>
+            <name>haoch-maven-release-repository</name>
+            <url>https://raw.github.com/yy0/maven-repos/release/</url>
+        </repository>
     </repositories>
-    
-    <distributionManagement>
-		<repository>
-			<id>mvn-repo</id>
-			<url>scpexe://ansj/home/mvn-repo/ROOT</url>
-		</repository>
-	</distributionManagement>
 
     <dependencies>
-
-
         <dependency>
             <groupId>org.nlpcn</groupId>
             <artifactId>nlp-lang</artifactId>
-            <version>0.2</version>
+            <version>1.0.2</version>
         </dependency>
 
         <dependency>
             <groupId>org.ansj</groupId>
             <artifactId>ansj_seg</artifactId>
-            <classifier>min</classifier>
-            <version>2.0.8</version>
+            <!--<classifier>min</classifier>-->
+            <version>3.0</version>
             <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>org.ansj</groupId>
-            <artifactId>ansj_lucene4_plug</artifactId>
-            <version>2.0.2</version>
+            <artifactId>ansj_lucene5_plug</artifactId>
+            <version>0.0.1</version>
             <scope>compile</scope>
         </dependency>
 
@@ -95,7 +107,7 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
-           
+
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
@@ -114,13 +126,13 @@
                 </executions>
             </plugin>
         </plugins>
-        
+
         <extensions>
-			<extension>
-				<groupId>org.apache.maven.wagon</groupId>
-				<artifactId>wagon-ssh-external</artifactId>
-				<version>1.0-beta-6</version>
-			</extension>
-		</extensions>
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh-external</artifactId>
+                <version>1.0-beta-6</version>
+            </extension>
+        </extensions>
     </build>
 </project>
