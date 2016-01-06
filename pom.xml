@@ -23,8 +23,17 @@
         <elasticsearch.plugin.isolated>false</elasticsearch.plugin.isolated>
         <tests.rest.load_packaged>false</tests.rest.load_packaged>
         <skip.unit.tests>true</skip.unit.tests>
+        <!--<local.maven.repository.path>file:D:\github-repos\maven-repos</local.maven.repository.path>-->
     </properties>
-
+<!--  发布到本地仓库
+    <distributionManagement>
+        <repository>
+            <id>local-repository</id>
+            <name>Internal Repository</name>
+            <url>${local.maven.repository.path}</url>
+        </repository>
+    </distributionManagement>
+-->
     <repositories>
         <repository>
             <id>mvn-repo</id>
